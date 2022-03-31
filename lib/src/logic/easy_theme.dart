@@ -13,7 +13,7 @@ class EasyTheme {
   EasyTheme._();
 
   static switchTheme(BuildContext context, bool isDarkMode) {
-    context.read<ThemeCubit>().setTheme(isDarkMode);
+    //context.read<ThemeCubit>().setTheme(isDarkMode);
   }
 
   static init({required AppThemes appThemes, required Widget child}) {
@@ -22,11 +22,10 @@ class EasyTheme {
             final tmpDir = await getTemporaryDirectory();
             final storage = await HydratedStorage.build(storageDirectory: tmpDir);
         await HydratedBlocOverrides.runZoned(
-              () async => runApp(BlocProviderPage(
-                scaffold: false,
-                bloc: ThemeCubit(appThemes),
+              () async => runApp(BlocProvider(
+                create: (_) => ThemeCubit(appThemes),
                 child: child,
-              ),),
+              )),
           blocObserver: AppBlocObserver(),
           storage: storage
         );
