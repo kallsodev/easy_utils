@@ -17,11 +17,15 @@ class EasyUtils {
     context.read<ThemeCubit>().setTheme(isDarkMode);
   }
 
-  static init({required AppThemes appThemes, required Widget child}) {
+  static init({required AppThemes appThemes, required Widget child, Function()? extraCalls}) {
     runZonedGuarded(
       () async {
+
         final tmpDir = await getTemporaryDirectory();
         final storage = await HydratedStorage.build(storageDirectory: tmpDir);
+        if(extraCalls != null) {
+          await extraCalls();
+        }
         await HydratedBlocOverrides.runZoned(
             () async => runApp(
                   ThemeCubitLayer(
