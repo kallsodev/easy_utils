@@ -19,7 +19,6 @@ class EasyMaterialApp extends StatelessWidget {
     Key? key,
     this.navigatorKey,
     this.scaffoldMessengerKey,
-    required this.appThemes,
     this.home,
     Map<String, WidgetBuilder> this.routes = const <String, WidgetBuilder>{},
     this.initialRoute,
@@ -469,8 +468,6 @@ class EasyMaterialApp extends StatelessWidget {
 
   /// {@macro flutter.widgets.widgetsApp.useInheritedMediaQuery}
   final bool useInheritedMediaQuery;
-
-  final AppThemes appThemes;
 
   @override
   Widget build(BuildContext context) {
