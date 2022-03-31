@@ -8,10 +8,23 @@ part 'theme_state.dart';
 
 class ThemeCubit extends HydratedCubit<ThemeState> {
   final AppThemes appThemes;
+
   ThemeCubit(this.appThemes) : super(ThemeState(appThemes.lightTheme));
 
-  void getTheme(ThemeState state) {
-    emit(state);
+  void setTheme(bool isDarkMode) {
+    emit(
+      isDarkMode
+          ? ThemeState(appThemes.darkTheme)
+          : ThemeState(appThemes.lightTheme),
+    );
+  }
+
+  void switchTheme() {
+    emit(
+      state.themeData.brightness == Brightness.light
+          ? ThemeState(appThemes.darkTheme)
+          : ThemeState(appThemes.lightTheme),
+    );
   }
 
   @override

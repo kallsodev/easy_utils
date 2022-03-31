@@ -10,3 +10,5 @@ export 'src/ui/w_space.dart';
 export 'src/ui/rounded_button.dart';
 export 'src/ui/rounded_container.dart';
 export 'src/logic/easy_material_app.dart';
+export 'src/ui/theme_button.dart';
+export 'src/logic/easy_theme.dart';
