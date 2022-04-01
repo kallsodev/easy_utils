@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'app_themes.dart';
@@ -20,6 +21,7 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   }
 
   void switchTheme() {
+    SystemChrome.setSystemUIOverlayStyle(state.themeData.brightness == Brightness.dark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light);
     emit(
       state.themeData.brightness == Brightness.light
           ? ThemeState(appThemes.darkTheme)
