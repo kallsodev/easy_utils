@@ -21,7 +21,6 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   }
 
   void switchTheme() {
-    SystemChrome.setSystemUIOverlayStyle(state.themeData.brightness == Brightness.dark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light);
     emit(
       state.themeData.brightness == Brightness.light
           ? ThemeState(appThemes.darkTheme)
