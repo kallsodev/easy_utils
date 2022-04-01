@@ -10,7 +10,9 @@ part 'theme_state.dart';
 class ThemeCubit extends HydratedCubit<ThemeState> {
   final AppThemes appThemes;
 
-  ThemeCubit(this.appThemes) : super(ThemeState(appThemes.lightTheme));
+  ThemeCubit(this.appThemes) : super(ThemeState(appThemes.lightTheme)) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+  }
 
   void setTheme(bool isDarkMode) {
     SystemChrome.setSystemUIOverlayStyle(isDarkMode ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark);
