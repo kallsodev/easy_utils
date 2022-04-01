@@ -13,6 +13,7 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   ThemeCubit(this.appThemes) : super(ThemeState(appThemes.lightTheme));
 
   void setTheme(bool isDarkMode) {
+    SystemChrome.setSystemUIOverlayStyle(isDarkMode ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark);
     emit(
       isDarkMode
           ? ThemeState(appThemes.darkTheme)
@@ -21,6 +22,7 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   }
 
   void switchTheme() {
+    SystemChrome.setSystemUIOverlayStyle(state.themeData.brightness == Brightness.dark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light);
     emit(
       state.themeData.brightness == Brightness.light
           ? ThemeState(appThemes.darkTheme)
@@ -30,6 +32,7 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
 
   @override
   ThemeState? fromJson(Map<String, dynamic> json) {
+    SystemChrome.setSystemUIOverlayStyle(json['isDark'] as bool ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark);
     return json['isDark'] as bool
         ? ThemeState(appThemes.darkTheme)
         : ThemeState(appThemes.lightTheme);
