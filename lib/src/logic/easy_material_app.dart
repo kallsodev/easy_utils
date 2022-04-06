@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_utils/easy_utils.dart';
 import 'package:easy_utils/src/logic/theme/theme_cubit.dart' if(dart.library.html) 'package:easy_utils/src/logic/theme/theme_cubit_web.dart';
 import 'package:flutter/material.dart';
@@ -483,7 +484,6 @@ class EasyMaterialApp extends StatelessWidget {
           highContrastDarkTheme: highContrastDarkTheme,
           highContrastTheme: highContrastTheme,
           initialRoute: initialRoute,
-          locale: locale,
           localeListResolutionCallback: localeListResolutionCallback,
           localeResolutionCallback: localeResolutionCallback,
           localizationsDelegates: localizationsDelegates,
@@ -498,12 +498,13 @@ class EasyMaterialApp extends StatelessWidget {
           showPerformanceOverlay: showPerformanceOverlay,
           showSemanticsDebugger: showSemanticsDebugger,
           supportedLocales: supportedLocales,
-          useInheritedMediaQuery: useInheritedMediaQuery,
           key: key,
           title: title,
           home: home,
           theme: state.themeData,
-          builder: builder,
+          useInheritedMediaQuery: true,
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
           onUnknownRoute: onUnknownRoute,
           routes: routes!,
           themeMode: themeMode,

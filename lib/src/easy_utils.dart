@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_utils/easy_utils.dart';
 import 'package:easy_utils/src/logic/theme/app_bloc_observer.dart';
 import 'package:easy_utils/src/logic/theme/theme_cubit.dart' if(dart.library.html) 'package:easy_utils/src/logic/theme/theme_cubit_web.dart';
@@ -47,9 +48,12 @@ class EasyUtils {
           }
           await HydratedBlocOverrides.runZoned(
                   () async => runApp(
-                ThemeCubitLayer(
-                  child: child,
-                  appThemes: appThemes,
+                DevicePreview(
+                  enabled: !kReleaseMode,
+                  builder: (context) => ThemeCubitLayer(
+                    child: child,
+                    appThemes: appThemes,
+                  ),
                 ),
               ),
               blocObserver: AppBlocObserver(),
