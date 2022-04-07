@@ -13,7 +13,6 @@ dependencies:
   hydrated_bloc: ^8.1.0
   equatable: ^2.0.3
   path_provider: ^2.0.9
-  device_preview: ^1.0.0
 
 dev_dependencies:
   flutter_test:

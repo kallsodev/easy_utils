@@ -1,5 +1,3 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:easy_utils/easy_utils.dart';
 import 'package:easy_utils/src/logic/theme/theme_cubit.dart' if(dart.library.html) 'package:easy_utils/src/logic/theme/theme_cubit_web.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -503,8 +501,8 @@ class EasyMaterialApp extends StatelessWidget {
           home: home,
           theme: state.themeData,
           useInheritedMediaQuery: true,
-          locale: DevicePreview.locale(context),
-          builder: DevicePreview.appBuilder,
+          locale: locale,
+          builder: builder,
           onUnknownRoute: onUnknownRoute,
           routes: routes!,
           themeMode: themeMode,
