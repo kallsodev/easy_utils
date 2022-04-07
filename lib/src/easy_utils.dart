@@ -39,12 +39,12 @@ class EasyUtils {
     } else {
       runZonedGuarded(
             () async {
-
+              if(extraCalls != null) {
+                await extraCalls();
+              }
           final tmpDir = await getTemporaryDirectory();
           final storage = await HydratedStorage.build(storageDirectory: tmpDir);
-          if(extraCalls != null) {
-            await extraCalls();
-          }
+
           await HydratedBlocOverrides.runZoned(
                   () async => runApp(
                 ThemeCubitLayer(
