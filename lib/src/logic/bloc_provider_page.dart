@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BlocProviderPage extends StatelessWidget {
-  final StateStreamableSource<Object?> bloc;
+class BlocProviderPage <T extends StateStreamableSource<Object?>>  extends StatelessWidget {
+  final T bloc;
 
   final PreferredSizeWidget? appBar;
   final Widget? bottomNavigationBar;
@@ -36,7 +36,7 @@ class BlocProviderPage extends StatelessWidget {
       floatingActionButtonLocation: floatingActionButtonLocation,
       drawer: drawer,
       appBar: appBar,
-      body: BlocProvider(
+      body: BlocProvider<T>(
         create: (_) => bloc,
         child: Padding(
           padding: padding,
@@ -44,7 +44,7 @@ class BlocProviderPage extends StatelessWidget {
         ),
       ),
     )
-        : BlocProvider(
+        : BlocProvider<T>(
       create: (_) => bloc,
       child: Padding(
         padding: padding,
