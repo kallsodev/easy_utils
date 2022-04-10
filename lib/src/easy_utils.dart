@@ -7,6 +7,7 @@ import 'package:easy_utils/src/logic/theme/theme_cubit.dart' if(dart.library.htm
 import 'package:easy_utils/src/logic/theme/theme_cubit_layer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -58,5 +59,19 @@ class EasyUtils {
             (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
       );
     }
+  }
+
+  static push(BuildContext context, Widget page) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
+
+  static pushReplacement(BuildContext context, Widget page) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
   }
 }
